@@ -21,7 +21,19 @@ functions:
 
   todos:
     handler: src/api/todos.handler
+    events:
+      - http:
+          path: /todo
+          method: GET
+
 
   todo:
     handler: src/api/todo.handler
+    events:
+      - http:
+          path: /todo/{id}
+          method: GET
+          request: # in some cases id should be allowed to be used explicitly
+            parameters:
+              id: true
 
