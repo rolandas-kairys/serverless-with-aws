@@ -3,7 +3,7 @@ service: serverless
 provider:
   name: aws
   runtime: nodejs8.10
-  profile: femasters
+  # profile: femasters ## if it is configured at all
   region: us-west-1
   stage: dev
 
