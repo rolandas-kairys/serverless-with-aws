@@ -4,7 +4,7 @@ provider:
   name: aws
   runtime: nodejs8.10
   # profile: femasters ## if it is configured at all
-  region: us-west-1
+  region: us-west-2
   stage: dev
 
 plugins:
@@ -14,26 +14,25 @@ functions:
   api:
     handler: src/api/api.handler
     events:
-      - http:
-          path: /api
-          method: GET
-          cors: true
-
-  todos:
-    handler: src/api/todos.handler
-    events:
-      - http:
-          path: /todo
-          method: GET
+      - http: ANY /
+      - http: 'ANY /{param+}'
 
 
-  todo:
-    handler: src/api/todo.handler
-    events:
-      - http:
-          path: /todo/{id}
-          method: GET
-          request: # in some cases id should be allowed to be used explicitly
-            parameters:
-              id: true
+  # todos:
+  #   handler: src/api/todos.handler
+  #   events:
+  #     - http:
+  #         path: /todo
+  #         method: GET
+
+
+  # todo:
+  #   handler: src/api/todo.handler
+  #   events:
+  #     - http:
+  #         path: /todo/{id}
+  #         method: GET
+  #         request: # in some cases id should be allowed to be used explicitly
+  #           parameters:
+  #             id: true
 
