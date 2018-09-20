@@ -1,7 +1,14 @@
-module.exports.handler = (evt, ctx, done) => {
-  done(null, {
-    statusCode: 200, // or 401, or other
-    headers: {},
-    body: JSON.stringify({ message: 'hello!?!!' })
-  })
-}
+const express = require('express');
+const http = require('serverless-http');
+
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.json({
+    message: 'all good'
+  });
+});
+
+
+module.exports.handler = http(app);
