@@ -1,7 +1,4 @@
 const express = require('express');
-const http = require('serverless-http');
-
-
 const app = express();
 
 app.get('/', (req, res) => {
@@ -22,4 +19,4 @@ app.get('/todos/:todo', (req, res) => {
   res.json({ id: 1, name: 'clean up', status: 'open' });
 });
 
-module.exports.handler = http(app);
+module.exports = app;
